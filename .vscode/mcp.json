@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "cloudflare": {
+      "url": "https://mcp.cloudflare.com/mcp"
+    },
+    "neon": {
+      "url": "https://mcp.neon.tech/mcp"
+    }
+  }
+}
+
+

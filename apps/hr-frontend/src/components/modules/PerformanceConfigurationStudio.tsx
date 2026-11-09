@@ -286,7 +286,7 @@ export const PerformanceConfigurationStudio: React.FC = () => {
     },
     {
       version: "v2.3-live",
-      author: "Richard Mamphey (Head HR)",
+      author: "Richard Amoah (Head HR)",
       publishedAt: "2026-11-01 09:30 UTC",
       changeSummary: "Enforced Balanced Scorecard 4-pillar weighting policy across UK and Ghana subsidiaries.",
       status: "active",
@@ -748,7 +748,6 @@ export const PerformanceConfigurationStudio: React.FC = () => {
                         Scope: {scale.departmentScope}
                       </span>
                     </div>
-                    <Badge variant="neutral" size="sm">{scale.type.toUpperCase()}</Badge>
                   </div>
 
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "0.6rem" }}>

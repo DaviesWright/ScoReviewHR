@@ -137,7 +137,7 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
       id: 2,
       tier: "Tier 2: Direct Supervisor Sign-off",
       role: "Immediate Supervisor",
-      officer: "Richard Mamphey (Senior Clinical Administrator)",
+      officer: "Richard Amoah (Senior Clinical Administrator)",
       serviceId: "GH/SC-OPS/3091",
       score: 4.0,
       status: "LOCKED_AND_SIGNED",
@@ -223,10 +223,10 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
     const depts = [
       { dept: "Healthcare Operations", team: "Clinical Governance Unit", manager: "Dr. Emmanuel K. Quarshie", role: "Clinical Operations Officer", color: "#0284c7" },
       { dept: "Engineering & Cloud", team: "Hyperdrive Edge Performance Squad", manager: "Benedicta Agbesi", role: "Cloud Infrastructure Engineer", color: "#6366f1" },
-      { dept: "People & Culture", team: "West Africa Talent Onboarding Taskforce", manager: "Richard Mamphey", role: "People Operations Specialist", color: "#ec4899" },
+      { dept: "People & Culture", team: "West Africa Talent Onboarding Taskforce", manager: "Richard Amoah", role: "People Operations Specialist", color: "#ec4899" },
       { dept: "Technology Advisory", team: "Corporate Information Security Committee", manager: "Paa Kwesi Barnes", role: "Security & Governance Consultant", color: "#8b5cf6" },
       { dept: "Finance & Accounting", team: "Statutory Tax & Audit Reconciliation Team", manager: "Kojo Antwi", role: "Financial Planning Analyst", color: "#f59e0b" },
-      { dept: "Client Success", team: "Regional Enterprise Client Care Hub", manager: "Clara Nukunu", role: "Enterprise Client Account Partner", color: "#10b981" },
+      { dept: "Client Success", team: "Regional Enterprise Client Care Hub", manager: "Doreen Wesley", role: "Enterprise Client Account Partner", color: "#10b981" },
     ];
     return Array.from({ length: 84 }, (_, i) => {
       const deptInfo = depts[i % depts.length];
@@ -260,7 +260,7 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
     {
       id: 1,
       requestNo: 1,
-      ownerName: "Richard Mamphey",
+      ownerName: "Richard Amoah",
       ownerStaffId: "SHR/GH/038",
       ownerRole: "Head, Human Resources",
       ownerAvatarColor: "#6366f1",
@@ -279,7 +279,7 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
     {
       id: 2,
       requestNo: 2,
-      ownerName: "Clara Nukunu",
+      ownerName: "Doreen Wesley",
       ownerStaffId: "SCG153",
       ownerRole: "Customer Service Executive",
       ownerAvatarColor: "#10b981",
@@ -296,7 +296,7 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
     {
       id: 3,
       requestNo: 3,
-      ownerName: "Adjoa Asare",
+      ownerName: "Belinda Ama Asare",
       ownerStaffId: "GH/2017/6/13/094",
       ownerRole: "HR Analytics & Information System Specialist",
       ownerAvatarColor: "#ec4899",
@@ -481,7 +481,7 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
       id: 5,
       level: "Employee",
       title: "Build and deploy 60 Interactive HR Reports with AI Query Translation",
-      lead: "Adjoa Asare",
+      lead: "Belinda Ama Asare",
       framework: "BSC",
       progressPct: 95,
       alignedToParent: "Technology Advisory Division",
@@ -548,9 +548,9 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
     },
     {
       id: 104,
-      employeeName: "Clara Nukunu",
+      employeeName: "Doreen Wesley",
       employeeRole: "Customer Service Executive",
-      supervisorName: "Richard Mamphey",
+      supervisorName: "Richard Amoah",
       cycleTitle: "Enterprise Annual Appraisal",
       framework: "OKR",
       goalTitle: "Deliver first-response resolution in under 4 minutes on priority tickets",
@@ -1971,44 +1971,6 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
       {/* ========================================================================= */}
       {activeMainTab === "military_chain" && (
         <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-          {/* Header Banner */}
-          <div
-            style={{
-              padding: "1rem 1.25rem",
-              borderRadius: radii.lg,
-              backgroundColor: "#f8fafc",
-              border: `1px solid ${colors.borderStrong}`,
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <div>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                <Icons.ShieldCheck size={18} color="#0f172a" />
-                <h2 style={{ fontSize: typography.sizes.base, fontWeight: 800, color: "#0f172a", margin: 0 }}>
-                  Sequential Hierarchical Appraisal Workflow (5-Tier Chain)
-                </h2>
-              </div>
-              <p style={{ fontSize: typography.sizes.xs, color: colors.textSecondary, margin: "0.25rem 0 0 0" }}>
-                Multi-tier sequential appraisal protocol: Immutable score locks at each level, employee credential verification, cryptographic digital stamps, and automated executive PDF dossier generation.
-              </p>
-            </div>
-            <div style={{ display: "flex", gap: "0.5rem" }}>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => {
-                  setMilitaryPdfGenerated(true);
-                  setStatusMessage({ text: "Official Executive Appraisal PDF generated with cryptographic digital stamps." });
-                }}
-              >
-                <Icons.FileText size={14} />
-                <span>Generate Stamped PDF</span>
-              </Button>
-            </div>
-          </div>
-
           {/* Sequential 5-Tier Command Sign-Off Chain */}
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             {militaryChain.map((step) => {
@@ -2110,31 +2072,6 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
             })}
           </div>
 
-          {/* Stamped Executive PDF Preview Modal Banner */}
-          {militaryPdfGenerated && (
-            <div
-              style={{
-                padding: "1.25rem 1.5rem",
-                borderRadius: radii.lg,
-                backgroundColor: "#f8fafc",
-                border: "2px solid #0f172a",
-                boxShadow: shadows.md,
-              }}
-            >
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <Icons.Award size={18} color="#0f172a" />
-                  <span style={{ fontSize: typography.sizes.sm, fontWeight: 800, color: "#0f172a", textTransform: "uppercase" }}>
-                    Official Form EXEC-GH/APPRAISAL/2026 Ready
-                  </span>
-                </div>
-                <Badge variant="success" size="sm">Tamper-Proof Audit Hash Verified</Badge>
-              </div>
-              <p style={{ margin: 0, fontSize: typography.sizes.xs, color: colors.textSecondary, lineHeight: 1.5 }}>
-                The appraisal dossier for <strong>Emmanuel K. Quarshie</strong> has been bundled with locked self-scores, line manager grades, and cryptographic digital stamps. This document complies with statutory health service guidelines and ISO 27001 audit standards.
-              </p>
-            </div>
-          )}
         </div>
       )}
 
@@ -2423,16 +2360,16 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
               {[
                 { box: "Rough Diamond", pot: "High Potential", perf: "Low Performance", staff: "1 Employee", names: ["K. Mensah (Assembly Worker)"], alert: "Needs Mentorship" },
-                { box: "Future Star", pot: "High Potential", perf: "Moderate Performance", staff: "2 Employees", names: ["Clara Nukunu", "P. Mensah"], alert: "Accelerate" },
+                { box: "Future Star", pot: "High Potential", perf: "Moderate Performance", staff: "2 Employees", names: ["Doreen Wesley", "P. Mensah"], alert: "Accelerate" },
                 { box: "Consistent Star (HiPo)", pot: "High Potential", perf: "High Performance", staff: "3 Employees", names: ["Emmanuel K. Quarshie", "Sarah Jenkins"], alert: "Executive Pipeline ⭐" },
 
                 { box: "Inconsistent Performer", pot: "Medium Potential", perf: "Low Performance", staff: "0 Employees", names: [], alert: "Review" },
-                { box: "Core Contributor", pot: "Medium Potential", perf: "Moderate Performance", staff: "8 Employees", names: ["Adjoa Asare", "Benedicta Agbesi"], alert: "Stable Core" },
+                { box: "Core Contributor", pot: "Medium Potential", perf: "Moderate Performance", staff: "8 Employees", names: ["Belinda Ama Asare", "Benedicta Agbesi"], alert: "Stable Core" },
                 { box: "High Performer", pot: "Medium Potential", perf: "High Performance", staff: "4 Employees", names: ["Marcus Chen", "Julian Vance"], alert: "Reward & Retain" },
 
                 { box: "Risk / Talent Action", pot: "Low Potential", perf: "Low Performance", staff: "1 Employee", names: ["E. Quaye"], alert: "8-Week PIP ⚠️" },
                 { box: "Solid Professional", pot: "Low Potential", perf: "Moderate Performance", staff: "3 Employees", names: ["B. Appiah"], alert: "Specialist" },
-                { box: "Trusted Master", pot: "Low Potential", perf: "High Performance", staff: "2 Employees", names: ["Richard Mamphey"], alert: "Flight Risk Alert 🚨" },
+                { box: "Trusted Master", pot: "Low Potential", perf: "High Performance", staff: "2 Employees", names: ["Richard Amoah"], alert: "Flight Risk Alert 🚨" },
               ].map((q, idx) => (
                 <div
                   key={idx}
@@ -3945,7 +3882,7 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
               {/* Box 2: High Potential, Moderate Performance */}
               <div style={{ padding: "1rem", borderRadius: radii.md, border: `1px solid ${colors.borderSubtle}`, backgroundColor: "rgba(99, 102, 241, 0.05)" }}>
                 <span style={{ fontSize: "10px", fontWeight: 700, color: colors.indigoPrimary, textTransform: "uppercase" }}>High Potential (Growth)</span>
-                <div style={{ fontWeight: 700, fontSize: typography.sizes.xs, color: colors.textPrimary, marginTop: "0.35rem" }}>Clara Nukunu</div>
+                <div style={{ fontWeight: 700, fontSize: typography.sizes.xs, color: colors.textPrimary, marginTop: "0.35rem" }}>Doreen Wesley</div>
                 <div style={{ fontSize: "11px", color: colors.textMuted }}>Customer Service</div>
               </div>
 
@@ -3985,14 +3922,14 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
               {/* Box 8: Low Potential, Moderate Performance */}
               <div style={{ padding: "1rem", borderRadius: radii.md, border: `1px solid ${colors.borderSubtle}`, backgroundColor: colors.surfaceSubtle }}>
                 <span style={{ fontSize: "10px", fontWeight: 700, color: colors.textMuted, textTransform: "uppercase" }}>Effective Specialist</span>
-                <div style={{ fontWeight: 700, fontSize: typography.sizes.xs, color: colors.textPrimary, marginTop: "0.35rem" }}>Richard Mamphey</div>
+                <div style={{ fontWeight: 700, fontSize: typography.sizes.xs, color: colors.textPrimary, marginTop: "0.35rem" }}>Richard Amoah</div>
                 <div style={{ fontSize: "11px", color: colors.textMuted }}>HR Head</div>
               </div>
 
               {/* Box 9: Low Potential, High Performance */}
               <div style={{ padding: "1rem", borderRadius: radii.md, border: `1px solid ${colors.borderSubtle}`, backgroundColor: "rgba(16, 185, 129, 0.05)" }}>
                 <span style={{ fontSize: "10px", fontWeight: 700, color: "#065f46", textTransform: "uppercase" }}>Trusted Professional</span>
-                <div style={{ fontWeight: 700, fontSize: typography.sizes.xs, color: colors.textPrimary, marginTop: "0.35rem" }}>Adjoa Asare</div>
+                <div style={{ fontWeight: 700, fontSize: typography.sizes.xs, color: colors.textPrimary, marginTop: "0.35rem" }}>Belinda Ama Asare</div>
                 <div style={{ fontSize: "11px", color: colors.textMuted }}>HRIS & Analytics</div>
               </div>
             </div>
@@ -4841,16 +4778,16 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
                   {[
                     { box: "Rough Diamond", pot: "High Potential", perf: "Low Performance", staff: "1 Staff", names: ["K. Mensah (Assembly Worker)"], alert: "Mentorship & Alignment", color: "#fef3c7", border: "#fde68a" },
-                    { box: "Future Star", pot: "High Potential", perf: "Moderate Performance", staff: "2 Staff", names: ["Clara Nukunu", "P. Mensah"], alert: "Fast-Track Stretch Assignments", color: "#ecfdf5", border: "#a7f3d0" },
+                    { box: "Future Star", pot: "High Potential", perf: "Moderate Performance", staff: "2 Staff", names: ["Doreen Wesley", "P. Mensah"], alert: "Fast-Track Stretch Assignments", color: "#ecfdf5", border: "#a7f3d0" },
                     { box: "Consistent Star (HiPo)", pot: "High Potential", perf: "High Performance", staff: "3 Staff", names: ["Emmanuel K. Quarshie", "Sarah Jenkins"], alert: "Executive Succession Pipeline ⭐", color: "#dcfce7", border: "#86efac" },
 
                     { box: "Inconsistent Performer", pot: "Moderate Potential", perf: "Low Performance", staff: "0 Staff", names: [], alert: "Targeted Coaching", color: "#f8fafc", border: "#e2e8f0" },
-                    { box: "Core Contributor", pot: "Moderate Potential", perf: "Moderate Performance", staff: "8 Staff", names: ["Adjoa Asare", "Benedicta Agbesi"], alert: "Stable Organizational Core", color: "#f1f5f9", border: "#cbd5e1" },
+                    { box: "Core Contributor", pot: "Moderate Potential", perf: "Moderate Performance", staff: "8 Staff", names: ["Belinda Ama Asare", "Benedicta Agbesi"], alert: "Stable Organizational Core", color: "#f1f5f9", border: "#cbd5e1" },
                     { box: "High Performer", pot: "Moderate Potential", perf: "High Performance", staff: "4 Staff", names: ["Marcus Chen", "Julian Vance"], alert: "Reward & Retain", color: "#e0e7ff", border: "#c7d2fe" },
 
                     { box: "Risk / Talent Action", pot: "Low Potential", perf: "Low Performance", staff: "1 Staff", names: ["E. Quaye"], alert: "8-Week Structured PIP ⚠️", color: "#fef2f2", border: "#fecaca" },
                     { box: "Solid Professional", pot: "Low Potential", perf: "Moderate Performance", staff: "3 Staff", names: ["B. Appiah"], alert: "Deep Technical Specialist", color: "#f8fafc", border: "#e2e8f0" },
-                    { box: "Trusted Master", pot: "Low Potential", perf: "High Performance", staff: "2 Staff", names: ["Richard Mamphey"], alert: "Flight Risk Alert 🚨", color: "#fff1f2", border: "#fecdd3" },
+                    { box: "Trusted Master", pot: "Low Potential", perf: "High Performance", staff: "2 Staff", names: ["Richard Amoah"], alert: "Flight Risk Alert 🚨", color: "#fff1f2", border: "#fecdd3" },
                   ].map((q, idx) => (
                     <div
                       key={idx}
@@ -5105,9 +5042,6 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
                 <span style={{ fontSize: typography.sizes.xs, color: colors.textMuted }}>Cycle & Subsidiary</span>
-                <Badge variant={selectedRequestForDetail.objectiveType === "BSC" ? "bsc" : "okr"} size="sm">
-                  {selectedRequestForDetail.objectiveType} Pure
-                </Badge>
               </div>
               <div style={{ fontWeight: 700, fontSize: typography.sizes.sm, color: colors.textPrimary }}>
                 {selectedRequestForDetail.appraisalCycle}
@@ -5311,8 +5245,8 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
                     <option value="Benedicta Agbesi">Benedicta Agbesi</option>
                     <option value="Philip Aryee">Philip Aryee</option>
                     <option value="Julian Vance">Julian Vance</option>
-                    <option value="Clara Nukunu">Clara Nukunu</option>
-                    <option value="Adjoa Asare">Adjoa Asare</option>
+                    <option value="Doreen Wesley">Doreen Wesley</option>
+                    <option value="Belinda Ama Asare">Belinda Ama Asare</option>
                   </select>
                 </div>
 
@@ -5328,7 +5262,7 @@ export const PerformanceManagementView: React.FC<PerformanceManagementViewProps>
                     <option value="Sarah Jenkins">Sarah Jenkins (VP People)</option>
                     <option value="Paa Kwesi Barnes">Paa Kwesi Barnes (Managing Principal)</option>
                     <option value="Richard Barnes">Richard Barnes (CEO)</option>
-                    <option value="Richard Mamphey">Richard Mamphey (HR Head)</option>
+                    <option value="Richard Amoah">Richard Amoah (HR Head)</option>
                   </select>
                 </div>
               </div>

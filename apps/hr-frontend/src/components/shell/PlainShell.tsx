@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import type { ModuleViewKey } from "./AppSidebar";
 import { ALL_VIEWS, isViewEnabled } from "../../config/modules";
+import { Icons } from "../../design-system/Icons";
 
 // Plain application frame: header, text-only navigation, content. No icons, badges, gradients, shadows,
 // animation, command palette, AI drawer or persona switcher. Neutral greys with one accent colour.
@@ -51,35 +52,55 @@ const GROUPS: { label: string; views: ModuleViewKey[] }[] = [
 ];
 
 const C = {
-  text: "#1f2937",
-  muted: "#4b5563",
-  border: "#d1d5db",
+  text: "#1c1b19",
+  muted: "#79756c",
+  border: "#e4e1da",
   surface: "#ffffff",
-  page: "#f9fafb",
-  accent: "#1d4ed8",
-  accentSoft: "#eff6ff",
+  page: "#f7f6f3",
+  accent: "#0f5c4d",
+  accentSoft: "#e7f0ed",
+  borderStrong: "#c9c5bb",
 };
 
 // Focus ring and the narrow-screen layout live in CSS because inline styles cannot express them.
 const CSS = `
 .ps-root { display: flex; flex-direction: column; min-height: 100vh; background: ${C.page}; color: ${C.text};
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 15px; }
-.ps-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-  padding: 0.75rem 1.5rem; background: ${C.surface}; border-bottom: 1px solid ${C.border}; }
+.ps-header { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; min-height: 64px;
+  padding: 0.5rem 1.5rem; background: ${C.surface}; border-bottom: 1px solid ${C.border}; }
+.ps-brand { display: flex; align-items: center; gap: 0.6rem; font-size: 16px; font-weight: 600; color: ${C.text}; white-space: nowrap; }
+.ps-mark { width: 28px; height: 28px; border-radius: 8px; background: ${C.accent}; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+.ps-search { flex: 0 1 360px; margin-left: auto; min-height: 36px; padding: 0 0.75rem; border: 1px solid ${C.border}; border-radius: 8px;
+  background: ${C.page}; color: ${C.muted}; font: inherit; font-size: 14px; text-align: left; cursor: pointer;
+  transition: border-color 150ms ease-out, background-color 150ms ease-out; }
+.ps-search:hover { border-color: ${C.borderStrong}; background: ${C.surface}; }
+.ps-header-actions { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.ps-ask { min-height: 36px; padding: 0 0.9rem; border: 1px solid ${C.accent}; border-radius: 8px; background: ${C.surface}; color: ${C.accent};
+  font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: background-color 150ms ease-out; }
+.ps-ask:hover { background: ${C.accentSoft}; }
+.ps-user { display: flex; align-items: center; gap: 0.6rem; padding-left: 0.75rem; border-left: 1px solid ${C.border}; }
+.ps-avatar { width: 34px; height: 34px; border-radius: 999px; background: ${C.accentSoft}; color: ${C.accent};
+  display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; }
+.ps-user-text { display: flex; flex-direction: column; line-height: 1.25; }
+.ps-user-name { font-size: 14px; font-weight: 600; color: ${C.text}; }
+.ps-user-role { font-size: 12px; color: ${C.muted}; }
 .ps-body { display: flex; flex: 1; min-height: 0; }
-.ps-nav { width: 220px; flex-shrink: 0; padding: 1.5rem 0.75rem; background: ${C.surface}; border-right: 1px solid ${C.border}; }
-.ps-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.25rem; }
-.ps-nav button { width: 100%; text-align: left; padding: 0.6rem 0.75rem; min-height: 44px; border: 1px solid transparent;
-  border-radius: 4px; background: transparent; color: ${C.text}; font: inherit; cursor: pointer; }
+.ps-nav { width: 248px; flex-shrink: 0; padding: 1.25rem 0.75rem; background: ${C.surface}; border-right: 1px solid ${C.border}; }
+.ps-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.ps-nav button { width: 100%; text-align: left; padding: 0 0.75rem; min-height: 36px; border: none; border-radius: 8px;
+  background: transparent; color: ${C.text}; font: inherit; font-size: 14px; cursor: pointer;
+  transition: background-color 150ms ease-out, color 150ms ease-out; }
 .ps-nav button:hover { background: ${C.page}; }
-.ps-nav button[aria-current="page"] { background: ${C.accentSoft}; color: ${C.accent}; border-color: ${C.accent}; font-weight: 600; }
+.ps-nav button[aria-current="page"] { background: ${C.accentSoft}; color: ${C.accent}; font-weight: 600; }
 .ps-main { flex: 1; min-width: 0; }
-.ps-nav .ps-group { font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
-.ps-sub { margin: 0.25rem 0 0.5rem 0.5rem; padding-left: 0.5rem; border-left: 2px solid ${C.border}; }
-.ps-sub button { padding-left: 0.75rem; font-size: 14px; }
-.ps-signout { min-height: 44px; padding: 0 1rem; border: 1px solid ${C.border}; border-radius: 4px; background: ${C.surface};
-  color: ${C.text}; font: inherit; cursor: pointer; }
-.ps-signout:hover { background: ${C.page}; }
+.ps-nav .ps-group { display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; font-size: 12px; font-weight: 600; color: ${C.muted}; }
+.ps-group-chev { display: flex; transition: transform 150ms ease-out; }
+.ps-group[aria-expanded="false"] .ps-group-chev { transform: rotate(-90deg); }
+.ps-sub { margin: 2px 0 0 0; padding-left: 0.25rem; }
+@media (prefers-reduced-motion: reduce) { .ps-nav button, .ps-group-chev { transition: none; } }
+.ps-signout { min-height: 36px; padding: 0 0.6rem; border: none; border-radius: 6px; background: transparent;
+  color: ${C.muted}; font: inherit; font-size: 13px; cursor: pointer; }
+.ps-signout:hover { background: ${C.page}; color: ${C.text}; }
 .ps-skip { position: absolute; left: -9999px; top: 0; padding: 0.5rem 1rem; background: ${C.surface}; border: 2px solid ${C.accent}; z-index: 100; }
 .ps-skip:focus { left: 0.5rem; top: 0.5rem; }
 .ps-root button:focus-visible, .ps-root a:focus-visible, .ps-root input:focus-visible, .ps-root select:focus-visible,
@@ -92,8 +113,17 @@ const CSS = `
 }
 `;
 
+// Role descriptions shown in the header. Demo sessions show these instead of a person's name.
+const ROLE_TITLES: Record<string, string> = {
+  employee: "Employee (self-service)",
+  line_manager: "Line manager",
+  hr_admin: "HR administrator",
+  hr_director: "HR director",
+};
+
 interface PlainShellProps {
   user: { name: string; email: string; role: string };
+  showName?: boolean;
   currentView: ModuleViewKey;
   onNavigate: (view: ModuleViewKey) => void;
   onSignOut: () => void;
@@ -102,7 +132,7 @@ interface PlainShellProps {
   children: React.ReactNode;
 }
 
-export const PlainShell: React.FC<PlainShellProps> = ({ user, currentView, onNavigate, onSignOut, onOpenDede, onOpenSearch, children }) => {
+export const PlainShell: React.FC<PlainShellProps> = ({ user, showName = true, currentView, onNavigate, onSignOut, onOpenDede, onOpenSearch, children }) => {
   const [openState, setOpenState] = useState<Record<string, boolean>>({});
   const enabled = ALL_VIEWS.filter((v) => isViewEnabled(v));
   const grouped = GROUPS.map((g) => ({ label: g.label, views: g.views.filter((v) => enabled.includes(v)) })).filter((g) => g.views.length > 0);
@@ -111,6 +141,14 @@ export const PlainShell: React.FC<PlainShellProps> = ({ user, currentView, onNav
   if (other.length > 0) grouped.push({ label: "Other", views: other });
   // Every section starts open so each page is visible in the sidebar; the user can collapse any section.
   const isOpen = (label: string) => openState[label] ?? true;
+  const roleTitle = ROLE_TITLES[user.role] ?? user.role;
+  const initials = (showName ? user.name : roleTitle)
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join("")
+    .toUpperCase();
   return (
     <div className="ps-root">
       <style>{CSS}</style>
@@ -118,22 +156,28 @@ export const PlainShell: React.FC<PlainShellProps> = ({ user, currentView, onNav
         Skip to content
       </a>
       <header className="ps-header">
-        <strong style={{ fontSize: "17px" }}>ScoReview HR</strong>
-        <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
-          <span>
-            {user.name}
-            {user.role ? <span style={{ color: C.muted }}> ({user.role})</span> : null}
-          </span>
-          {onOpenSearch && (
-            <button type="button" className="ps-signout" onClick={onOpenSearch}>
-              Search
-            </button>
-          )}
+        <div className="ps-brand">
+          <span className="ps-mark" aria-hidden="true">SR</span>
+          <span>ScoReview HR</span>
+        </div>
+        {onOpenSearch && (
+          <button type="button" className="ps-search" onClick={onOpenSearch}>
+            Search people, pages and reports
+          </button>
+        )}
+        <div className="ps-header-actions">
           {onOpenDede && (
-            <button type="button" className="ps-signout" onClick={onOpenDede}>
+            <button type="button" className="ps-ask" onClick={onOpenDede}>
               Ask Dede
             </button>
           )}
+          <div className="ps-user">
+            <span className="ps-avatar" aria-hidden="true">{initials}</span>
+            <span className="ps-user-text">
+              <span className="ps-user-name">{showName ? user.name : roleTitle}</span>
+              {showName && user.role ? <span className="ps-user-role">{roleTitle}</span> : null}
+            </span>
+          </div>
           <button type="button" className="ps-signout" onClick={onSignOut}>
             Sign out
           </button>
@@ -155,7 +199,9 @@ export const PlainShell: React.FC<PlainShellProps> = ({ user, currentView, onNav
                     onClick={() => setOpenState({ ...openState, [g.label]: !expanded })}
                   >
                     <span>{g.label}</span>
-                    <span aria-hidden="true">{expanded ? "−" : "+"}</span>
+                    <span className="ps-group-chev" aria-hidden="true">
+                      <Icons.ChevronDown size={14} />
+                    </span>
                   </button>
                   {expanded && (
                     <ul id={id} className="ps-sub">
